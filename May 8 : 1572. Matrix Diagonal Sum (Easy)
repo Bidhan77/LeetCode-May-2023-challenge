@@ -1,0 +1,17 @@
+class Solution {
+    public int diagonalSum(int[][] mat) {
+        int n = mat.length;
+        int length = mat.length - 1;
+        int firstDiagonal = 0;
+        int secondDiagonal = 0;
+        for(int i = 0; i < n; i ++){
+            firstDiagonal += mat[i][i];
+
+            if(i != length){
+                secondDiagonal += mat[i][length];
+            }
+            length --;
+        }
+        return firstDiagonal + secondDiagonal ;
+    }
+}
