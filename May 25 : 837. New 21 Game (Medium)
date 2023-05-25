@@ -1,0 +1,20 @@
+class Solution {
+    public double new21Game(int n, int k, int maxPts) {
+         double[] dp = new double[n + maxPts + 1];
+        
+        // Fill the dp array for the base case
+        for (int i = k; i <= n; i++) {
+            dp[i] = 1.0;
+        }
+        
+        double sum = Math.min(n - k + 1, maxPts);
+        
+        // Calculate the probabilities using dynamic programming
+        for (int i = k - 1; i >= 0; i--) {
+            dp[i] = sum / maxPts;
+            sum += dp[i] - dp[i + maxPts];
+        }
+        
+        return dp[0];
+    }
+}
